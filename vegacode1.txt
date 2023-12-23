@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Portoky/adatvizualizacio/main/data.csv"
+  },
+  "width": 550,
+  "height": 550,
+  "layer": [
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": ["1988", "2017"]}
+        },
+        "y": {"field": "suicides_no", "type": "quantitative"},
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "scale": {"range": ["purple", "blue"]}
+        },
+        "shape": {
+          "field": "age",
+          "type": "nominal",
+          "legend": {"title": "Age Categories"}
+        }
+      }
+    },
+    {
+      "mark": "line",
+      "transform": [
+        {"filter":"datum.sex=='male'"},
+        {"filter": ""}
+      ],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": ["1988", "2017"]}
+        },
+        "y": {"field": "age", "type": "quantitative"}
+      }
+    }
+  ]
+}

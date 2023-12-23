@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Portoky/adatvizualizacio/main/masterRomania.csv"
+  },
+  "width": 550,
+  "height": 550,
+  "layer": [
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": ["1988", "2017"]}
+        },
+        "y": {"field": "suicides_no", "type": "quantitative"},
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "scale": {"range": ["purple", "blue"]}
+        },
+        "shape": {
+          "field": "age",
+          "type": "nominal",
+          "legend": {"title": "Age Categories"}
+        }
+      }
+    },
+    {
+      "mark": "line",
+      "transform": [{"filter": "datum.sex=='male'"}],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": ["1988", "2017"]}
+        },
+        "y": {"field": "suicides_no", "type": "quantitative"},
+        "detail": {"field": "age", "type": "nominal"},
+        "color": {"value": "lightblue"}
+      }
+    },
+    {
+      "mark": "line",
+      "transform": [{"filter": "datum.sex=='female'"}],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": ["1988", "2017"]}
+        },
+        "y": {"field": "suicides_no", "type": "quantitative"},
+        "detail": {"field": "age", "type": "nominal"},
+        "color": {"value": "pink"}
+      }
+    }
+  ],
+  "config": {}
+}
