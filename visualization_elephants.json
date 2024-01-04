@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Portoky/adatvizualizacio/main/modified-african-elephants.csv"
+  },
+  "width": 550,
+  "height": 550,
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "scale": {"domain": ["1910", "2017"]}
+    },
+    "y": {
+      "field": "African Elephant population (AfESG, 2019)",
+      "type": "quantitative"
+    }
+  },
+  "config": {}
+}
